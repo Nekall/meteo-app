@@ -8,9 +8,6 @@ const UseFetch = (lat, lon) => {
   let method = "GET";
   const options = {
     method,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-    },
   };
 
 
@@ -19,7 +16,7 @@ const UseFetch = (lat, lon) => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lon}&key=${api_key}&include=minutely`, options);
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${api_key}`, options);
         const json = await res.json();
         setResponse(json);
         setIsLoading(false);

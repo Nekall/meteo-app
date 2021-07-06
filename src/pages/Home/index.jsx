@@ -9,7 +9,11 @@ const Home = () => {
 
   return(
     <>
-    {res.response? <p>Reponse OK</p> : <p>Loading...</p>}
+    {res.response?
+      <div>
+        <p>{res.response.current.weather[0].icon}</p>
+      </div>
+      : <p>Loading...</p>}
     </>
   )
 };
