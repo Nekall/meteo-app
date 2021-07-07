@@ -1,20 +1,28 @@
 import UseFetch from 'hooks/UseFetch';
-import { useState } from 'react'
+import React from 'react';
+import Day from 'components/Day';
+import { v4 as uuidv4 } from 'uuid';
 
 const Home = () => {
-  const [lat, setLat] = useState("48.8921848");
-  const [lon, setLon] = useState("-2.3443523");
+  let lat = "48.8921848";
+  let lon = "-2.3443523";
   const res = UseFetch(lat, lon);
-  console.log(res);
 
   return(
-    <>
-    {res.response?
-      <div>
-        <p>{res.response.current.weather[0].icon}</p>
-      </div>
+    <div className="home-page">
+    {res.response && lat && lon?
+      <>
+        {res.response.daily.map((days) => {
+          return(
+            <div key={uuidv4()}>
+              <Day date={days.dt} temp={days.temp.day} description={days.weather[0].description} icon={days.weather[0].icon}/>
+            </div>
+          )
+        })}
+      </>
       : <p>Loading...</p>}
-    </>
+    </div>
   )
 };
+
 export default Home;

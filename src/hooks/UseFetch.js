@@ -1,22 +1,21 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 const UseFetch = (lat, lon) => {
   const api_key = process.env.REACT_APP_API_KEY;
-  const [response, setResponse] = React.useState();
-  const [error, setError] = React.useState();
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [response, setResponse] = useState();
+  const [error, setError] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   let method = "GET";
   const options = {
     method,
   };
 
 
-  React.useEffect(() => {
-    console.log(`${lat}, ${lon}`);
+  useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${api_key}`, options);
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts,current&appid=${api_key}&lang=fr&units=metric`, options);
         const json = await res.json();
         setResponse(json);
         setIsLoading(false);

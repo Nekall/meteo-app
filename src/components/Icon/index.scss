@@ -1,0 +1,51 @@
+.icon{
+  width: 80px;
+  height: 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &.w01d{
+    background-image: url("../../assets/images/01d.svg");
+  }
+
+  &.w01n{
+    background-image: url("../../assets/images/01n.svg");
+  }
+
+  &.w02d{
+    background-image: url("../../assets/images/02d.svg");
+  }
+
+  &.w02n{
+    background-image: url("../../assets/images/02n.svg");
+  }
+
+  &.w03d, &.w03n, &.w04d, &.w04n{
+    background-image: url("../../assets/images/03d.svg");
+  }
+
+  &.w09d, &.w09n{
+    background-image: url("../../assets/images/09d.svg");
+  }
+
+  &.w10d{
+    background-image: url("../../assets/images/10d.svg");
+  }
+
+  &.w10n{
+    background-image: url("../../assets/images/10n.svg");
+  }
+
+  &.w11d, &.w11n{
+    background-image: url("../../assets/images/11d.svg");
+  }
+
+  &.w13d, &.w13n{
+    background-image: url("../../assets/images/13d.svg");
+  }
+
+  &.w50d, &.w50n{
+    background-image: url("../../assets/images/50d.svg");
+  }
+}
