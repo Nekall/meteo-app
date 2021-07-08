@@ -11,7 +11,7 @@ const Day = (props) => {
       <Icon icon={props.icon}/>
       <div>
         <FormatDate date={props.date}/>
-        <p>{props.temp} °C</p>
+        <p>{Math.round(props.temp)} °C</p>
         <p>{description}</p>
       </div>
     </div>

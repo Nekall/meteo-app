@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import cellphoneLogo from 'assets/images/cellphone.svg';
+import { Link } from 'react-router-dom';
 import './index.scss';
 
 const Navbar = () => (

@@ -25,7 +25,7 @@ const UseFetch = (lat, lon) => {
       }
     };
     fetchData();
-  }, []);
+  }, [lat, lon]);
   return { response, error, isLoading };
     };
 
