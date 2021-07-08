@@ -1,11 +1,12 @@
+import "swiper/components/navigation/navigation.min.css"
+import "swiper/components/pagination/pagination.min.css"
+import { Swiper, SwiperSlide } from "swiper/react";
 import React, { useState } from 'react';
+import Footer from 'components/Footer';
 import UseFetch from 'hooks/UseFetch';
 import { v4 as uuidv4 } from 'uuid';
 import Day from 'components/Day';
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
-import "swiper/components/navigation/navigation.min.css"
-import "swiper/components/pagination/pagination.min.css"
 
 import SwiperCore, {
   Navigation,Pagination,Mousewheel,Keyboard
@@ -18,9 +19,28 @@ const Home = () => {
   const [lon, setLon] = useState("2.2770204");
   let res = UseFetch(lat, lon);
 
+  let options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+function success(pos) {
+  let crd = pos.coords;
+  setLat(crd.latitude);
+  setLon(crd.longitude);
+}
+
+function error(err) {
+  console.warn(`ERREUR (${err.code}): ${err.message}`);
+}
 
   const locateUser = () => {
-    // https://developer.mozilla.org/fr/docs/Web/API/Geolocation_API
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    } else {
+      console.log("La géolocalisation n'est pas disponible");
+    }
   };
 
   const chooseCity = () => {
@@ -73,37 +93,40 @@ const Home = () => {
   };
 
   return(
-    <div className="home-page">
-    {res.response && lat && lon?
-      <>
-        <div>
-          <label htmlFor="cars">Selectionner une ville :</label>
-          <select onChange={() => chooseCity()} className="select-cities" name="cities" id="cities">
-              <option value="paris">Paris</option>
-              <option value="marseille">Marseille</option>
-              <option value="lyon">Lyon</option>
-              <option value="toulouse">Toulouse</option>
-              <option value="nice">Nice</option>
-              <option value="nantes">Nantes</option>
-              <option value="montpellier">Montpellier</option>
-              <option value="strasbourg">Strasbourg</option>
-              <option value="bordeaux">Bordeaux</option>
-              <option value="lille">Lille</option>
-              <option value="location">Localisation</option>
-          </select>
-        </div>
-        <Swiper cssMode={true} navigation={true} mousewheel={true} keyboard={true} className="mySwiper">
-        {res.response.daily.map((days) => {
-          return(
-            <div key={uuidv4()}>
-              <SwiperSlide key={uuidv4()}><Day date={days.dt} temp={days.temp.day} description={days.weather[0].description} icon={days.weather[0].icon}/></SwiperSlide>
-            </div>
-          )
-        })}
-        </Swiper>
-      </>
-      : <p>Loading...</p>}
-    </div>
+    <>
+      <div className="home-page">
+      {res.response && lat && lon?
+        <>
+          <div>
+            <label htmlFor="cars">Selectionner une ville :</label>
+            <select onChange={() => chooseCity()} className="select-cities" name="cities" id="cities">
+                <option value="paris">Paris</option>
+                <option value="marseille">Marseille</option>
+                <option value="lyon">Lyon</option>
+                <option value="toulouse">Toulouse</option>
+                <option value="nice">Nice</option>
+                <option value="nantes">Nantes</option>
+                <option value="montpellier">Montpellier</option>
+                <option value="strasbourg">Strasbourg</option>
+                <option value="bordeaux">Bordeaux</option>
+                <option value="lille">Lille</option>
+                <option value="location">Ma position 🧭</option>
+            </select>
+          </div>
+          <Swiper cssMode={true} navigation={true} mousewheel={true} keyboard={true} className="mySwiper">
+          {res.response.daily.map((days) => {
+            return(
+              <div key={uuidv4()}>
+                <SwiperSlide key={uuidv4()}><Day date={days.dt} temp={days.temp.day} description={days.weather[0].description} icon={days.weather[0].icon}/></SwiperSlide>
+              </div>
+            )
+          })}
+          </Swiper>
+        </>
+        : <p>Loading...</p>}
+      </div>
+      <Footer />
+    </>
   )
 };
 

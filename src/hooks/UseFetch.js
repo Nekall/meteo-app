@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 
 const UseFetch = (lat, lon) => {
-  const api_key = process.env.REACT_APP_API_KEY;
   const [response, setResponse] = useState();
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  let method = "GET";
-  const options = {
-    method,
-  };
-
 
   useEffect(() => {
+    const api_key = process.env.REACT_APP_API_KEY;
+    let method = "GET";
+    const options = {
+      method,
+    };
+
     const fetchData = async () => {
       setIsLoading(true);
       try {
