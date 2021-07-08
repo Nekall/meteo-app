@@ -10,11 +10,11 @@ Pouvoir consulter la météo de plusieurs grandes villes, ainsi que pouvoir util
 
 **Features:**
  - [x] Température de Paris
- - [ ] Température de plusieurs grandes villes
- - [ ] Température du résultat de la géoloc
+ - [x] Température de plusieurs grandes villes
+ - [x] Température du résultat de la géoloc
  - [ ] ...
 
 **Ajout & Modif futures:**
 
+ - [x] Caroussel
  - [ ] Responsivité
- - [ ] ...
