@@ -2,6 +2,16 @@ import React, { useState } from 'react';
 import UseFetch from 'hooks/UseFetch';
 import { v4 as uuidv4 } from 'uuid';
 import Day from 'components/Day';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
+import "swiper/components/navigation/navigation.min.css"
+import "swiper/components/pagination/pagination.min.css"
+
+import SwiperCore, {
+  Navigation,Pagination,Mousewheel,Keyboard
+} from 'swiper/core';
+
+SwiperCore.use([Navigation,Pagination,Mousewheel,Keyboard]);
 
 const Home = () => {
   const [lat, setLat] = useState("48.8589507");
@@ -15,7 +25,6 @@ const Home = () => {
 
   const chooseCity = () => {
     let city = document.getElementById('cities').value;
-    console.log(city);
 
     switch(city) {
     case "lille":
@@ -83,13 +92,15 @@ const Home = () => {
               <option value="location">Localisation</option>
           </select>
         </div>
+        <Swiper cssMode={true} navigation={true} mousewheel={true} keyboard={true} className="mySwiper">
         {res.response.daily.map((days) => {
           return(
             <div key={uuidv4()}>
-              <Day date={days.dt} temp={days.temp.day} description={days.weather[0].description} icon={days.weather[0].icon}/>
+              <SwiperSlide key={uuidv4()}><Day date={days.dt} temp={days.temp.day} description={days.weather[0].description} icon={days.weather[0].icon}/></SwiperSlide>
             </div>
           )
         })}
+        </Swiper>
       </>
       : <p>Loading...</p>}
     </div>
