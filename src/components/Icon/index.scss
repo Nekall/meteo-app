@@ -1,9 +1,10 @@
 .icon{
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 150px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-top: 100px;
 
   &.w01d{
     background-image: url("../../assets/images/01d.svg");
@@ -47,5 +48,28 @@
 
   &.w50d, &.w50n{
     background-image: url("../../assets/images/50d.svg");
+  }
+}
+
+//==============Responsive==========
+
+@media only screen and (max-width: 1000px){
+  .icon{
+    width: 125px;
+    height: 125px;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .icon{
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media only screen and (max-width: 425px){
+  .icon{
+    width: 75px;
+    height: 75px;
   }
 }

@@ -13,7 +13,7 @@ const Day = (props) => {
       <div>
         <FormatDate date={props.date}/>
         <p><img src={humidity} alt="Humidité" className="logo"/> {props.humidity}%</p>
-        <p><img src={wind} alt="Vent" className="logo"/> {props.wind}km/h</p>
+        <p><img src={wind} alt="Vent" className="logo"/> {Math.round(props.wind)}km/h</p>
         <p>{Math.round(props.temp)}°C</p>
         <p>{description}</p>
       </div>

@@ -7,7 +7,7 @@ body{
   font-family: 'Bainsley Roman';
   margin: 0px;
   padding: 0px;
-  --swiper-navigation-size: 20px;
+  font-size: 1.5em;
 }
 
 .home-page{
@@ -18,17 +18,36 @@ body{
   border: 1px solid black;
   padding: 10px 20px;
   margin: 5px;
+  font-size: 1em;
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//=============Responsive============
+
+@media only screen and (max-width: 650px){
+  .swiper-button-prev{
+    display: none !important;
+  }
+  .swiper-button-next{
+    display: none !important;
+  }
 }
 
 //=============SwiperSlide============
 
-.swiper-container {
+.swiper-container{
   width: 50%;
   height: 50%;
   margin-top: 80px;
+  position: static !important;
 }
 
-.swiper-slide {
+.swiper-slide{
   text-align: center;
   background: #fff;
   /* Center slide text vertically */
@@ -46,9 +65,8 @@ body{
   align-items: center;
 }
 
-.swiper-slide img {
+.swiper-slide img{
   display: block;
-  width: 100%;
-  height: 100%;
+
   object-fit: cover;
 }

@@ -1,16 +1,14 @@
+import SwiperCore, { Navigation,Pagination,Mousewheel,Keyboard } from 'swiper/core';
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import ReactLoading from 'react-loading';
 import React, { useState } from 'react';
 import Footer from 'components/Footer';
 import UseFetch from 'hooks/UseFetch';
 import { v4 as uuidv4 } from 'uuid';
 import Day from 'components/Day';
 import "swiper/swiper.min.css";
-
-import SwiperCore, {
-  Navigation,Pagination,Mousewheel,Keyboard
-} from 'swiper/core';
 
 SwiperCore.use([Navigation,Pagination,Mousewheel,Keyboard]);
 
@@ -123,7 +121,7 @@ function error(err) {
           })}
           </Swiper>
         </>
-        : <p>Loading...</p>}
+        : <ReactLoading className="loading" type="bubbles" color="#00d4ff" height={150} width={150} />}
       </div>
       <Footer />
     </>

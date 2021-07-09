@@ -18,3 +18,12 @@ nav a{
 nav a:hover{
   color: rgba(0, 0, 0, 0.5);
 }
+
+//=============Responsive============
+
+@media only screen and (max-width: 600px){
+  .logo-weather {
+    width: 60px;
+    margin-right: 15px;
+  }
+}
