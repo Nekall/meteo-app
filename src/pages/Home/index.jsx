@@ -1,5 +1,5 @@
-import "swiper/components/navigation/navigation.min.css"
-import "swiper/components/pagination/pagination.min.css"
+import "swiper/components/navigation/navigation.min.css";
+import "swiper/components/pagination/pagination.min.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import React, { useState } from 'react';
 import Footer from 'components/Footer';
@@ -110,14 +110,14 @@ function error(err) {
                 <option value="strasbourg">Strasbourg</option>
                 <option value="bordeaux">Bordeaux</option>
                 <option value="lille">Lille</option>
-                <option value="location">Ma position 🧭</option>
+                <option value="location">Ma position</option>
             </select>
           </div>
           <Swiper cssMode={true} navigation={true} mousewheel={true} keyboard={true} className="mySwiper">
           {res.response.daily.map((days) => {
             return(
               <div key={uuidv4()}>
-                <SwiperSlide key={uuidv4()}><Day date={days.dt} temp={days.temp.day} description={days.weather[0].description} icon={days.weather[0].icon}/></SwiperSlide>
+                <SwiperSlide key={uuidv4()}><Day date={days.dt} temp={days.temp.day} description={days.weather[0].description} humidity={days.humidity} wind={days.wind_speed} icon={days.weather[0].icon}/></SwiperSlide>
               </div>
             )
           })}
